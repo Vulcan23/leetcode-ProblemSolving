@@ -14,7 +14,7 @@ var findDiagonalOrder = function (mat) {
         do {
             diagonal.push(mat[j][index]);
         } while (++j < arrLength && (index = i - j + n, index >= 0));
-        arr.concat(((i + n) % 2 === 0 ? diagonal.reverse() : diagonal));
+        arr.push(...((i + n) % 2 === 0 ? diagonal.reverse() : diagonal));
         if (i === arrChildLength - 1) {
             if (++n === arrLength) {
                 break;
