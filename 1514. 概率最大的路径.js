@@ -28,7 +28,7 @@ var maxProbability = function (n, edges, succProb, start, end) {
         for (let i in graph[node]) {
             if (_prob * graph[node][i] > prob[i]) {
                 stack.push([i, prob[i] = _prob * graph[node][i]]);
-                !newAdd && (newAdd = true);
+                newAdd = true;
             }
         }
         if (newAdd) {
