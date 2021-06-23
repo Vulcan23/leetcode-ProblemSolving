@@ -21,7 +21,7 @@ var delNodes = function (root, to_delete) {
                 break;
             }
         }
-    })
+    });
     arr.sort((a, b) => b - a);
     let result = [];
     let aPush = [true, true];
@@ -46,10 +46,8 @@ var delNodes = function (root, to_delete) {
                         }
                     }
                 }
-            } else {
-                if ((i + 2) * j - 2 >= len) {
-                    k[0] = len - 1;
-                }
+            } else if ((i + 2) * j - 2 >= len) {
+                k[0] = len - 1;
             }
             let aRow = [[], []];
             if (aPush[0]) {
@@ -63,12 +61,10 @@ var delNodes = function (root, to_delete) {
                         root[l] = null;
                     }
                 }
-            } else {
-                if (k[1]) {
-                    for (let l = (i + 2) * j - 1; l <= k[1]; l++) {
-                        aRow[1].push(root[l]);
-                        root[l] = null;
-                    }
+            } else if (k[1]) {
+                for (let l = (i + 2) * j - 1; l <= k[1]; l++) {
+                    aRow[1].push(root[l]);
+                    root[l] = null;
                 }
             }
             if (aRow[0].length && aRow[0].every(value => value === null)) {
@@ -120,10 +116,10 @@ var delNodes = function (root, to_delete) {
             break;
         }
     }
-    result.push(arrBranch);
+    arrBranch.length && result.push(arrBranch);
     return result;
 };
 
-let root = [1, 2, 3, 4, 5, 6, 7],
-    to_delete = [3, 5];
+let root = [1, 2, 4, null, 3],
+    to_delete = [1];
 console.log(delNodes(root, to_delete));
