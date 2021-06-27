@@ -1,0 +1,32 @@
+/**
+ * @param {string} digits
+ * @return {string[]}
+ */
+var letterCombinations = function (digits) {
+    if (!digits) {
+        return [];
+    }
+    this.digits = digits;
+    this.graph = {
+        "2": ["a", "b", "c"],
+        "3": ["d", "e", "f"],
+        "4": ["g", "h", "i"],
+        "5": ["j", "k", "l"],
+        "6": ["m", "n", "o"],
+        "7": ["p", "q", "r", "s"],
+        "8": ["t", "u", "v"],
+        "9": ["w", "x", "y", "z"],
+    };
+    return dfs(0, [""]);
+};
+
+function dfs(index, arr) {
+    if (index === this.digits.length) {
+        return arr;
+    }
+    return dfs(index + 1, arr.flatMap(item => this.graph[this.digits[index]].map(word => item + word)));
+}
+
+console.log(letterCombinations("23"));
+console.log(letterCombinations(""));
+console.log(letterCombinations("2"));
