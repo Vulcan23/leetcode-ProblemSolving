@@ -25,7 +25,7 @@ var search = function (nums, target) {
             } else {
                 right = mid - 1;
             }
-        } else if (nums[mid] < target) {
+        } else {
             if (target > nums[right] && nums[mid] < nums[right]) {
                 right = mid - 1;
             } else {
