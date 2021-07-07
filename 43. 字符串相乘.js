@@ -36,9 +36,9 @@ var multiply = function (num1, num2) {
         let sum = 0;
         for (let j = 0; j < arr[i].length; j++) {
             sum += arr[i][j];
-            if (sum >= 10 ** 15) {
-                sum -= 10 ** 15;
-                arr[i + 2].push(10);
+            if (sum >= 9 * 10 ** 15) {
+                sum -= 9 * 10 ** 15;
+                arr[i + 2].push(90);
             }
         }
         let j = sum % 10 ** 7;
