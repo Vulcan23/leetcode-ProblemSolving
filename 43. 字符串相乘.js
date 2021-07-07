@@ -14,15 +14,15 @@ var multiply = function (num1, num2) {
     i = num2.length % 7;
     i !== 0 && (num2 = "0".repeat(7 - i) + num2);
     i = num1.length - 7;
-    while (i >= 0) {
+    do {
         arrNum1.push(num1.slice(i, i + 7));
         i -= 7;
-    }
+    } while (i >= 0);
     i = num2.length - 7;
-    while (i >= 0) {
+    do {
         arrNum2.push(num2.slice(i, i + 7));
         i -= 7;
-    }
+    } while (i >= 0);
     let arr = [];
     for (let i = 0; i < arrNum1.length + arrNum2.length; i++) {
         arr[i] = [];
