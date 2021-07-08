@@ -5,11 +5,7 @@
  */
 var findPoisonedDuration = function (timeSeries, duration) {
     let total = 0;
-    timeSeries.reduce((accumulator, currentValue) => {
-        let difference = currentValue - accumulator;
-        total += difference >= duration ? duration : difference;
-        return currentValue;
-    });
+    timeSeries.reduce((accumulator, currentValue) => (total += Math.min(currentValue - accumulator, duration), currentValue));
     return total + duration;
 };
 
