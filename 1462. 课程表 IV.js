@@ -8,8 +8,8 @@ var checkIfPrerequisite = function (numCourses, prerequisites, queries) {
     this.graph = [];
     let marked = [];
     for (let i = 0; i < numCourses; i++) {
-        graph[i] = [];
-        marked[i] = Array(numCourses).fill(false);
+        graph.push([]);
+        marked.push(Array(numCourses));
     }
     prerequisites.forEach(value => {
         graph[value[0]].push(value[1]);
@@ -17,7 +17,7 @@ var checkIfPrerequisite = function (numCourses, prerequisites, queries) {
     for (let i = 0; i < numCourses; i++) {
         dfs(i, marked[i]);
     }
-    return queries.map(value => marked[value[0]][value[1]]);
+    return queries.map(value => marked[value[0]][value[1]] || false);
 };
 
 function dfs(i, marked) {

@@ -50,5 +50,13 @@ function search(index, i) {
 }
 
 let board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
+    word = "ABCCED";
+console.log(exist(board, word));
+
+board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
     word = "SEE";
+console.log(exist(board, word));
+
+board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
+    word = "ABCB";
 console.log(exist(board, word));
