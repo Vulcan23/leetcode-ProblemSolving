@@ -2,7 +2,7 @@
  * @param {string} s
  * @return {number}
  */
- var lengthOfLongestSubstring = function (s) {
+var lengthOfLongestSubstring = function (s) {
     if (s === "") {
         return 0;
     }
@@ -25,9 +25,7 @@
                 }
             }
         }
-        if (con) {
-            sum++;
-        }
+        con && sum++;
         max = Math.max(sum, max);
     }
     return max;

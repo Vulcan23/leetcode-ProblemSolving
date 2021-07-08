@@ -14,12 +14,8 @@ function dfs(lRemain, rRemain, str) {
         this.res.push(str);
         return;
     }
-    if (lRemain > 0) {
-        dfs(lRemain - 1, rRemain, str + "(");
-    }
-    if (lRemain < rRemain) {
-        dfs(lRemain, rRemain - 1, str + ")");
-    }
+    lRemain > 0 && dfs(lRemain - 1, rRemain, str + "(");
+    lRemain < rRemain && dfs(lRemain, rRemain - 1, str + ")");
 };
 
 console.log(generateParenthesis(3));

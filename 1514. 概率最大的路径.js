@@ -31,9 +31,7 @@ var maxProbability = function (n, edges, succProb, start, end) {
                 newAdd = true;
             }
         }
-        if (newAdd) {
-            stack.sort((a, b) => a[1] - b[1]);
-        }
+        newAdd && stack.sort((a, b) => a[1] - b[1]);
     }
     return prob[end];
 };
