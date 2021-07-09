@@ -17,7 +17,7 @@ var maxProbability = function (n, edges, succProb, start, end) {
         graph[i][j] = graph[j][i] = succProb[index];
     });
     let stack = [[start, 1]];
-    let prob = new Array(n).fill(0);
+    let prob = [];
     prob[start] = 1;
     while (stack.length) {
         let [node, _prob] = stack.pop();
@@ -26,14 +26,14 @@ var maxProbability = function (n, edges, succProb, start, end) {
         }
         let newAdd = false;
         for (let i in graph[node]) {
-            if (_prob * graph[node][i] > prob[i]) {
+            if (_prob * graph[node][i] > (prob[i] || 0)) {
                 stack.push([i, prob[i] = _prob * graph[node][i]]);
                 newAdd = true;
             }
         }
         newAdd && stack.sort((a, b) => a[1] - b[1]);
     }
-    return prob[end];
+    return prob[end] || 0;
 };
 
 let n = 3,
