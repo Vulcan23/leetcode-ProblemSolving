@@ -9,7 +9,7 @@ var checkIfPrerequisite = function (numCourses, prerequisites, queries) {
     let marked = [];
     for (let i = 0; i < numCourses; i++) {
         graph.push([]);
-        marked.push(Array(numCourses));
+        marked.push([]);
     }
     prerequisites.forEach(value => {
         graph[value[0]].push(value[1]);
