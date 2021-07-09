@@ -2,17 +2,18 @@
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
-var rotate = function (matrix) {
-    let length = matrix.length - 1;
-    for (let i = 0; i < Math.floor(matrix.length / 2); i++) {
-        for (let j = 0; j < Math.ceil(matrix.length / 2); j++) {
-            let temp = matrix[i][j];
-            matrix[i][j] = matrix[length - j][i];
-            matrix[length - j][i] = matrix[length - i][length - j];
-            matrix[length - i][length - j] = matrix[j][length - i];
-            matrix[j][length - i] = temp;
+ var rotate = function (matrix) {
+    let arr = [];
+    let length = matrix.length;
+    for (let i = 0; i < length; i++) {
+        arr.push([]);
+    }
+    for (let i = 0; i < length; i++) {
+        for (let j = 0; j < length; j++) {
+            arr[i][j] = matrix[length - 1 - j][i];
         }
     }
+    matrix.splice(0, length, ...arr);
     return matrix;
 };
 
