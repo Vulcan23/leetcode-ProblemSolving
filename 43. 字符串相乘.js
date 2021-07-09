@@ -25,7 +25,7 @@ var multiply = function (num1, num2) {
     } while (i >= 0);
     let arr = [];
     for (let i = 0; i < arrNum1.length + arrNum2.length; i++) {
-        arr[i] = [];
+        arr.push([]);
     }
     for (let i = 0; i < arrNum1.length; i++) {
         for (let j = 0; j < arrNum2.length; j++) {
