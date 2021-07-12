@@ -11,7 +11,7 @@ var threeSumClosest = function (nums, target) {
     } else if (nums[length - 3] + nums[length - 2] + nums[length - 1] < target) {
         return nums[length - 3] + nums[length - 2] + nums[length - 1];
     }
-    let minDifference = Number.MAX_SAFE_INTEGER,
+    let minDifference = Infinity,
         symbol;
     for (let i = 0; i < length - 2; i++) {
         if (nums[i] + nums[i + 1] + nums[i + 2] - target >= minDifference) {

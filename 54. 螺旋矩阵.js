@@ -2,8 +2,8 @@
  * @param {number[][]} matrix
  * @return {number[]}
  */
-var spiralOrder = function (matrix) {
-    let arr = matrix.splice(0, 1)[0];
+ var spiralOrder = function (matrix) {
+    let arr = matrix.shift();
     while (matrix.length) {
         let temp = [];
         for (let i = 0; i < matrix[0].length; i++) {
@@ -15,10 +15,10 @@ var spiralOrder = function (matrix) {
             }
         }
         matrix = temp;
-        arr.push(...matrix.splice(0, 1)[0]);
+        arr.push(...matrix.shift());
     }
     return arr;
-};
+  };
 
 let matrix = [
     [1, 2, 3],
