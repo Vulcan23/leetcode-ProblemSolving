@@ -15,7 +15,7 @@ var search = function (nums, target) {
             }
             return -1;
         }
-        let mid = Math.trunc((left + right) / 2);
+        const mid = Math.trunc((left + right) / 2);
         if (nums[mid] === target) {
             return mid;
         }

@@ -3,8 +3,8 @@
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
  var rotate = function (matrix) {
-    let arr = [];
-    let length = matrix.length - 1;
+    const arr = [];
+    const length = matrix.length - 1;
     for (let i = 0; i <= length; i++) {
         arr.push([]);
         for (let j = 0; j <= length; j++) {

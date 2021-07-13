@@ -4,10 +4,10 @@
  * @return {boolean}
  */
 var exist = function (board, word) {
-    let chars = {};
+    const chars = {};
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {
-            let char = board[i][j];
+            const char = board[i][j];
             if (!chars[char]) {
                 chars[char] = [[i, j]];
             } else {
@@ -35,10 +35,10 @@ function search(index, i) {
     if (index === this.arr.length - 1) {
         return true;
     }
-    let prev = this.arr[index][i],
+    const prev = this.arr[index][i],
         temp = prev.slice();
     for (let j = 0; j < this.arr[index + 1].length; j++) {
-        let next = this.arr[index + 1][j];
+        const next = this.arr[index + 1][j];
         if (next.length && (prev[0] === next[0] && Math.abs(prev[1] - next[1]) === 1 || prev[1] === next[1] && Math.abs(prev[0] - next[0]) === 1)) {
             prev.splice(0, 2);
             if (search(index + 1, j)) {

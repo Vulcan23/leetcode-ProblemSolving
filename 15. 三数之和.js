@@ -3,12 +3,12 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-    let arr = [];
+    const arr = [];
     if (nums.length < 3) {
         return arr;
     }
     nums.sort((a, b) => a - b);
-    let length = nums.length;
+    const length = nums.length;
     for (let i = 0; i < length - 2; i++) {
         if (nums[i] + nums[i + 1] + nums[i + 2] > 0) {
             break;
@@ -19,7 +19,7 @@ var threeSum = function (nums) {
         let left = i + 1,
             right = length - 1;
         while (left < right) {
-            let sum = nums[i] + nums[left] + nums[right];
+            const sum = nums[i] + nums[left] + nums[right];
             if (sum === 0) {
                 arr.push([nums[i], nums[left], nums[right]]);
                 while (left < right && nums[left] === nums[++left]) { }

@@ -7,10 +7,7 @@ var convert = function (s, numRows) {
     if (numRows === 1) {
         return s;
     }
-    let result = [];
-    for (let i = 0; i < numRows; i++) {
-        result.push([]);
-    }
+    const result = Array(numRows).fill().map(() => []);
     let index = 0;
     let direction = 1;
     for (let i = 0; i < s.length; i++) {

@@ -5,12 +5,8 @@
  * @return {boolean[]}
  */
 var checkIfPrerequisite = function (numCourses, prerequisites, queries) {
-    this.graph = [];
-    let marked = [];
-    for (let i = 0; i < numCourses; i++) {
-        graph.push([]);
-        marked.push([]);
-    }
+    const marked = Array(numCourses).fill().map(() => []);
+    this.graph = Array(numCourses).fill().map(() => []);
     prerequisites.forEach(value => {
         graph[value[0]].push(value[1]);
     });
@@ -22,7 +18,7 @@ var checkIfPrerequisite = function (numCourses, prerequisites, queries) {
 
 function dfs(i, marked) {
     marked[i] = true;
-    for (let j of this.graph[i]) {
+    for (const j of this.graph[i]) {
         !marked[j] && dfs(j, marked);
     }
 };

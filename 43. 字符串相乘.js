@@ -7,7 +7,7 @@ var multiply = function (num1, num2) {
     if (num1 === "0" || num2 === "0") {
         return "0";
     }
-    let arrNum1 = [],
+    const arrNum1 = [],
         arrNum2 = [];
     let i = num1.length % 7;
     i !== 0 && (num1 = "0".repeat(7 - i) + num1);
@@ -23,10 +23,7 @@ var multiply = function (num1, num2) {
         arrNum2.push(num2.slice(i, i + 7));
         i -= 7;
     } while (i >= 0);
-    let arr = [];
-    for (let i = 0; i < arrNum1.length + arrNum2.length; i++) {
-        arr.push([]);
-    }
+    const arr = Array(arrNum1.length + arrNum2.length).fill().map(() => []);
     for (let i = 0; i < arrNum1.length; i++) {
         for (let j = 0; j < arrNum2.length; j++) {
             arr[i + j].push(arrNum1[i] * arrNum2[j]);
@@ -41,7 +38,7 @@ var multiply = function (num1, num2) {
                 arr[i + 2].push(90);
             }
         }
-        let j = sum % 10 ** 7;
+        const j = sum % 10 ** 7;
         arr[i] = j;
         arr[i + 1].push((sum - j) / 10 ** 7);
     }

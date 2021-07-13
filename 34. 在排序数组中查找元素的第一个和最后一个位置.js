@@ -8,7 +8,7 @@ var searchRange = function (nums, target) {
         right = nums.length - 1,
         i;
     while (left <= right) {
-        let mid = Math.trunc((left + right) / 2);
+        const mid = Math.trunc((left + right) / 2);
         if (nums[mid] === target) {
             i = mid;
             break;
@@ -20,9 +20,9 @@ var searchRange = function (nums, target) {
         }
     }
     if (i !== undefined) {
-        let arr = [i - 1, i + 1];
+        const arr = [i - 1, i + 1];
         while (left <= arr[0]) {
-            let mid = Math.trunc((left + arr[0]) / 2);
+            const mid = Math.trunc((left + arr[0]) / 2);
             if (nums[mid] === target) {
                 arr[0] = mid - 1;
             } else {
@@ -30,7 +30,7 @@ var searchRange = function (nums, target) {
             }
         }
         while (arr[1] <= right) {
-            let mid = Math.trunc((arr[1] + right) / 2);
+            const mid = Math.trunc((arr[1] + right) / 2);
             if (nums[mid] === target) {
                 arr[1] = mid + 1;
             } else {

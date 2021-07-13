@@ -14,7 +14,7 @@ var longestPalindrome = function (s) {
             right++;
         }
         i = right + 1;
-        let part = Math.trunc((max - (right - left)) / 2 + 1);
+        const part = Math.trunc((max - (right - left)) / 2 + 1);
         if (part > 0 && (left - part < 0 || right + part >= s.length || s[left - part] !== s[right + part])) {
             continue;
         }

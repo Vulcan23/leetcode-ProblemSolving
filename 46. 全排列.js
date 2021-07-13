@@ -13,7 +13,7 @@ function dfs(arrRest, arr) {
         return this.result.push(arr.slice());
     }
     for (let i = 0; i < arrRest.length; i++) {
-        let arrClone = arrRest.slice();
+        const arrClone = arrRest.slice();
         arr.push(arrClone.splice(i, 1)[0]);
         dfs(arrClone, arr);
         arr.pop();

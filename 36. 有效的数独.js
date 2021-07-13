@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 var isValidSudoku = function (board) {
-    let graph = {};
+    const graph = {};
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             if (board[i][j] !== ".") {

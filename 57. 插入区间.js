@@ -4,11 +4,11 @@
  * @return {number[][]}
  */
 var insert = function (intervals, newInterval) {
-    let leftCheck = (() => {
+    const leftCheck = (() => {
         let left = 0,
             right = intervals.length - 1;
         while (left <= right) {
-            let mid = Math.trunc((left + right) / 2);
+            const mid = Math.trunc((left + right) / 2);
             if (newInterval[0] < intervals[mid][0]) {
                 if (newInterval[0] < intervals[mid - 1]?.[0]) {
                     right = mid - 1;
@@ -25,7 +25,7 @@ var insert = function (intervals, newInterval) {
             let left = leftCheck + 1 && leftCheck,
                 right = intervals.length - 1;
             while (left <= right) {
-                let mid = Math.trunc((left + right) / 2);
+                const mid = Math.trunc((left + right) / 2);
                 if (newInterval[1] > intervals[mid][1]) {
                     if (newInterval[1] > intervals[mid + 1]?.[1]) {
                         left = mid + 1;

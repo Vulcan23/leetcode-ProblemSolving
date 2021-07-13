@@ -7,14 +7,14 @@ var combinationSum2 = function (candidates, target) {
     this.result = [];
     this.arrLessThanOrEqualTo = [];
     if ((() => {
-        let [key, number] = getDigitsOfLastNonzeroEffectiveFigure(target),
+        const [key, number] = getDigitsOfLastNonzeroEffectiveFigure(target),
             yesEven = false,
             isBreak = false;
-        for (let i of candidates) {
+        for (const i of candidates) {
             if (i <= target) {
                 arrLessThanOrEqualTo.push(i);
                 if (!isBreak) {
-                    let [ikey, inumber] = getDigitsOfLastNonzeroEffectiveFigure(i);
+                    const [ikey, inumber] = getDigitsOfLastNonzeroEffectiveFigure(i);
                     if (key > ikey) {
                         isBreak = true;
                     } else if (key === ikey) {
@@ -34,7 +34,7 @@ var combinationSum2 = function (candidates, target) {
 };
 
 function getDigitsOfLastNonzeroEffectiveFigure(value) {
-    let s = value.toString();
+    const s = value.toString();
     for (let i = s.length - 1; i >= 0; i--) {
         if (s[i] !== "0") {
             return [s.length - i, Number(s[i])];

@@ -3,9 +3,9 @@
  * @return {string[][]}
  */
 var groupAnagrams = function (strs) {
-    let graph = {};
+    const graph = {};
     for (let i = 0; i < strs.length; i++) {
-        let key = strs[i].split("").sort((a, b) => a.charCodeAt() - b.charCodeAt()).join("");
+        const key = strs[i].split("").sort((a, b) => a.charCodeAt() - b.charCodeAt()).join("");
         if (!graph[key]) {
             graph[key] = [strs[i]];
         } else {

@@ -4,12 +4,12 @@
  * @return {number[][]}
  */
 var fourSum = function (nums, target) {
-    let arr = [];
+    const arr = [];
     if (nums.length < 4) {
         return arr;
     }
     nums.sort((a, b) => a - b);
-    let length = nums.length;
+    const length = nums.length;
     for (let i = 0; i < length - 3; i++) {
         if (nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target) {
             break;
@@ -27,7 +27,7 @@ var fourSum = function (nums, target) {
             let left = j + 1,
                 right = length - 1;
             while (left < right) {
-                let sum = nums[i] + nums[j] + nums[left] + nums[right];
+                const sum = nums[i] + nums[j] + nums[left] + nums[right];
                 if (sum === target) {
                     arr.push([nums[i], nums[j], nums[left], nums[right]]);
                     while (left < right && nums[left] === nums[++left]) { }

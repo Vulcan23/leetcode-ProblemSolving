@@ -12,7 +12,7 @@ var canJump = function (nums) {
         if (right === left) {
             return false;
         }
-        let temp = right;
+        const temp = right;
         for (let i = right; i > left; i--) {
             if (nums[i] + i > right) {
                 right = nums[i] + i;

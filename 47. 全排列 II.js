@@ -12,11 +12,11 @@ function dfs(arrRest, arr) {
     if (arrRest.length === 0) {
         return this.result.push(arr.slice());
     }
-    let graph = {};
+    const graph = {};
     for (let i = 0; i < arrRest.length; i++) {
         if (!graph[arrRest[i]]) {
             graph[arrRest[i]] = true;
-            let arrClone = arrRest.slice();
+            const arrClone = arrRest.slice();
             arr.push(arrClone.splice(i, 1)[0]);
             dfs(arrClone, arr);
             arr.pop();

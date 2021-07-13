@@ -3,12 +3,12 @@
  * @return {number[]}
  */
 var findDiagonalOrder = function (mat) {
-    let arr = [];
+    const arr = [];
     let n = 0;
-    let length = mat.length;
+    const length = mat.length;
     let i = 0;
     do {
-        let diagonal = [];
+        const diagonal = [];
         let j = n;
         let index = i;
         do {

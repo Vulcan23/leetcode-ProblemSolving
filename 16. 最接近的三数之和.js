@@ -5,7 +5,7 @@
  */
 var threeSumClosest = function (nums, target) {
     nums.sort((a, b) => a - b);
-    let length = nums.length;
+    const length = nums.length;
     if (nums[0] + nums[1] + nums[2] > target) {
         return nums[0] + nums[1] + nums[2];
     } else if (nums[length - 3] + nums[length - 2] + nums[length - 1] < target) {
@@ -23,7 +23,7 @@ var threeSumClosest = function (nums, target) {
         let left = i + 1,
             right = length - 1;
         while (left < right) {
-            let difference = nums[i] + nums[left] + nums[right] - target;
+            const difference = nums[i] + nums[left] + nums[right] - target;
             if (difference === 0) {
                 return target;
             }

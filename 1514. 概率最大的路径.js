@@ -8,22 +8,22 @@
  */
 
 var maxProbability = function (n, edges, succProb, start, end) {
-    let graph = {};
+    const graph = {};
     for (let i = 0; i < n; i++) {
         graph[i] = {};
     }
     edges.forEach((value, index) => {
-        let [i, j] = value;
+        const [i, j] = value;
         graph[i][j] = graph[j][i] = succProb[index];
     });
-    let stack = [[start, 1]],
-        item,
+    const stack = [[start, 1]],
         prob = [];
     prob[start] = 1;
+    let item;
     while (item = stack.pop()) {
         if (item[1] >= prob[item[0]]) {
             let newAdd = false;
-            for (let i in graph[item[0]]) {
+            for (const i in graph[item[0]]) {
                 if (item[1] * graph[item[0]][i] > (prob[i] || 0)) {
                     stack.push([i, prob[i] = item[1] * graph[item[0]][i]]);
                     newAdd = true;

@@ -6,7 +6,7 @@ var nextPermutation = function (nums) {
     if (nums.length === 1) {
         return nums;
     }
-    let graph = {};
+    const graph = {};
     let i = nums.length - 1;
     for (; i > 0; i--) {
         if (graph[nums[i]]) {
@@ -32,7 +32,7 @@ var nextPermutation = function (nums) {
         graph[nums[i - 1]] = 1;
     }
     nums[i - 1] = j;
-    for (let j in graph) {
+    for (const j in graph) {
         for (let k = 0; k < graph[j]; k++) {
             nums[i + k] = Number(j);
         }

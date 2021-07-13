@@ -34,7 +34,7 @@ var divide = function (dividend, divisor) {
         return symbol;
     }
     this.divisor = divisor;
-    let i = dfs(dividend);
+    const i = dfs(dividend);
     return symbol > 0 ? i : -i;
 };
 

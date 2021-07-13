@@ -13,7 +13,7 @@ var jump = function (nums) {
     let right = nums[0],
         left = 0;
     while (true) {
-        let temp = right;
+        const temp = right;
         for (let i = right; i > left; i--) {
             if (nums[i] + i > right) {
                 right = nums[i] + i;

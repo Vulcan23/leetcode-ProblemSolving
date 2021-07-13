@@ -3,7 +3,7 @@
  * @return {number}
  */
 var myAtoi = function (s) {
-    let n = Number(s.match(/(?<=^ *)[\+\-]?[0-9]+/)?.[0]);
+    const n = Number(s.match(/(?<=^ *)[\+\-]?[0-9]+/)?.[0]);
     if (n) {
         if (n > 2 ** 31 - 1) {
             return 2 ** 31 - 1;
