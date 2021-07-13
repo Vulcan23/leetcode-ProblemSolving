@@ -21,10 +21,7 @@ var letterCombinations = function (digits) {
 };
 
 function dfs(index, arr) {
-    if (index === this.digits.length) {
-        return arr;
-    }
-    return dfs(index + 1, arr.flatMap(item => this.graph[this.digits[index]].map(word => item + word)));
+    return index === this.digits.length ? arr : dfs(index + 1, arr.flatMap(item => this.graph[this.digits[index]].map(word => item + word)));
 }
 
 console.log(letterCombinations("23"));

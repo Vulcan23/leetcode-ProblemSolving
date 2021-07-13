@@ -11,10 +11,7 @@ var divide = function (dividend, divisor) {
         return dividend;
     }
     if (divisor === -1) {
-        if (dividend === -(2 ** 31)) {
-            return -dividend - 1;
-        }
-        return -dividend;
+        return dividend === -(2 ** 31) ? -dividend : -dividend - 1;
     }
     let symbol = 1;
     if (dividend > 0) {

@@ -4,13 +4,15 @@
  * @return {number}
  */
 var uniquePaths = function (m, n) {
-    const min = Math.min(m, n) - 1;
-    return min === 0 ? 1 : factorial(m + n - 2, min) / factorial(min, min);
+    let result = 1;
+    let max = m - 1,
+        min = n - 1;
+    m < n && ([max, min] = [min, max]);
+    for (let i = 1; i <= min; i++) {
+        result *= (max + i) / i;
+    }
+    return result;
 };
-
-function factorial(m, n) {
-    return n === 1 ? m : m * factorial(--m, --n);
-}
 
 console.log(uniquePaths(3, 7));
 console.log(uniquePaths(3, 2));
