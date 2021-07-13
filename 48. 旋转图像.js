@@ -4,16 +4,14 @@
  */
  var rotate = function (matrix) {
     let arr = [];
-    let length = matrix.length;
-    for (let i = 0; i < length; i++) {
+    let length = matrix.length - 1;
+    for (let i = 0; i <= length; i++) {
         arr.push([]);
-    }
-    for (let i = 0; i < length; i++) {
-        for (let j = 0; j < length; j++) {
-            arr[i][j] = matrix[length - 1 - j][i];
+        for (let j = 0; j <= length; j++) {
+            arr[i].push(matrix[length - j][i]);
         }
     }
-    matrix.splice(0, length, ...arr);
+    matrix.splice(0, length + 1, ...arr);
     return matrix;
 };
 
