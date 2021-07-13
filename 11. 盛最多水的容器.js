@@ -7,12 +7,7 @@ var maxArea = function (height) {
         left = 0,
         right = height.length - 1;
     do {
-        let sum;
-        if (height[left] < height[right]) {
-            sum = height[left] * (right - left++);
-        } else {
-            sum = height[right] * (right-- - left);
-        }
+        let sum = height[left] < height[right] ? height[left] * (right - left++) : height[right] * (right-- - left);
         max = Math.max(sum, max);
     } while (left < right);
     return max;
