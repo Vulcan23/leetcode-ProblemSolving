@@ -2,34 +2,47 @@
  * @param {number[][]} matrix
  * @return {number[]}
  */
-var spiralOrder = function (matrix) {
-    let arr = matrix.shift();
-    while (matrix.length) {
-        let temp = [],
-            length = matrix[0].length - 1;
-        for (let i = 0; i < length; i++) {
-            temp.push([]);
+var spiralarr = function (matrix) {
+    const arr = [];
+    let left = 0,
+        right = matrix[0].length - 1,
+        top = 0,
+        bottom = matrix.length - 1;
+    while (left <= right && top <= bottom) {
+        for (let column = left; column <= right; column++) {
+            arr.push(matrix[top][column]);
         }
-        for (let i = length; i >= 0; i--) {
-            for (let j = 0; j < matrix.length; j++) {
-                (i === length ? arr : temp[length - 1 - i]).push(matrix[j][i]);
+        for (let row = top + 1; row <= bottom; row++) {
+            arr.push(matrix[row][right]);
+        }
+        if (top !== bottom) {
+            for (let column = right - 1; column > left; column--) {
+                arr.push(matrix[bottom][column]);
             }
         }
-        matrix = temp;
-    }
+        if (left !== right) {
+            for (let row = bottom; row > top; row--) {
+                arr.push(matrix[row][left]);
+            }
+        }
+        left++,
+            right--,
+            top++,
+            bottom--;
+    };
     return arr;
-};
+}
 
 let matrix = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9],
 ];
-console.log(spiralOrder(matrix));
+console.log(spiralarr(matrix));
 
 matrix = [
     [1, 2, 3, 4],
     [5, 6, 7, 8],
     [9, 10, 11, 12],
 ];
-console.log(spiralOrder(matrix));
+console.log(spiralarr(matrix));

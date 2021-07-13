@@ -2,34 +2,36 @@
  * @param {number} n
  * @return {number[][]}
  */
- var generateMatrix = function (n) {
-    let start = n ** 2;
-    let arr = [[start]],
-        length;
-    while (arr.length !== n) {
-        let tempRotate = [];
-        arr.push([]);
-        length = arr.length - 1;
-        for (let i = 0; i < arr[0].length; i++) {
-            tempRotate.push([]);
-            arr[length].push(--start);
-            for (let j = 0; j <= length; j++) {
-                tempRotate[i].push(arr[length - j][i]);
+var generateMatrix = function (n) {
+    let num = 1;
+    const matrix = Array(n).fill().map(() => []);
+    let left = 0,
+        right = n - 1,
+        top = 0,
+        bottom = n - 1;
+    while (left <= right && top <= bottom) {
+        for (let column = left; column <= right; column++) {
+            matrix[top][column] = num++;
+        }
+        for (let row = top + 1; row <= bottom; row++) {
+            matrix[row][right] = num++;
+        }
+        if (top !== bottom) {
+            for (let column = right - 1; column > left; column--) {
+                matrix[bottom][column] = num++;
             }
         }
-        arr = tempRotate;
-    }
-    if (length) {
-        let tempRotate = [];
-        for (let i = 0; i <= length; i++) {
-            tempRotate.push([]);
-            for (let j = 0; j <= length; j++) {
-                tempRotate[i].push(arr[length - j][i]);
+        if (left !== right) {
+            for (let row = bottom; row > top; row--) {
+                matrix[row][left] = num++;
             }
         }
-        arr = tempRotate;
+        left++,
+            right--,
+            top++,
+            bottom--;
     }
-    return arr;
+    return matrix;
 };
 
 console.log(generateMatrix(3));
