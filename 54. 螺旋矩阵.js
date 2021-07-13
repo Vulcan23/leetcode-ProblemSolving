@@ -2,23 +2,23 @@
  * @param {number[][]} matrix
  * @return {number[]}
  */
- var spiralOrder = function (matrix) {
+var spiralOrder = function (matrix) {
     let arr = matrix.shift();
     while (matrix.length) {
-        let temp = [];
-        for (let i = 0; i < matrix[0].length; i++) {
+        let temp = [],
+            length = matrix[0].length - 1;
+        for (let i = 0; i < length; i++) {
             temp.push([]);
         }
-        for (let i = matrix[0].length - 1; i >= 0; i--) {
+        for (let i = length; i >= 0; i--) {
             for (let j = 0; j < matrix.length; j++) {
-                temp[matrix[0].length - 1 - i].push(matrix[j][i]);
+                (i === length ? arr : temp[length - 1 - i]).push(matrix[j][i]);
             }
         }
         matrix = temp;
-        arr.push(...matrix.shift());
     }
     return arr;
-  };
+};
 
 let matrix = [
     [1, 2, 3],
