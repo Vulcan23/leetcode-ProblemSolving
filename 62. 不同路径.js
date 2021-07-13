@@ -9,10 +9,7 @@ var uniquePaths = function (m, n) {
 };
 
 function factorial(m, n) {
-    if (n-- === 1) {
-        return m;
-    }
-    return m-- * factorial(m, n);
+    return n === 1 ? m : m * factorial(--m, --n);
 }
 
 console.log(uniquePaths(3, 7));
