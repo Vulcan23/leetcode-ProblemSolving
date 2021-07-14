@@ -3,8 +3,8 @@
  * @return {number}
  */
 var uniquePathsWithObstacles = function (obstacleGrid) {
-    const rowLength = obstacleGrid[0].length,
-        columnLength = obstacleGrid.length,
+    const columnLength = obstacleGrid.length,
+        rowLength = obstacleGrid[0].length,
         graph = Array(columnLength).fill().map(() => Array(rowLength).fill(0));
     for (let i = 0; i < rowLength; i++) {
         if (obstacleGrid[0][i]) {
