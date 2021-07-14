@@ -6,16 +6,10 @@ var uniquePathsWithObstacles = function (obstacleGrid) {
     const columnLength = obstacleGrid.length,
         rowLength = obstacleGrid[0].length,
         graph = Array(columnLength).fill().map(() => Array(rowLength).fill(0));
-    for (let i = 0; i < rowLength; i++) {
-        if (obstacleGrid[0][i]) {
-            break;
-        }
+    for (let i = 0; obstacleGrid[0][i] === 0; i++) {
         graph[0][i] = 1;
     }
-    for (let i = 0; i < columnLength; i++) {
-        if (obstacleGrid[i][0]) {
-            break;
-        }
+    for (let i = 0; obstacleGrid[i]?.[0] === 0; i++) {
         graph[i][0] = 1;
     }
     for (let i = 1; i < columnLength; i++) {
