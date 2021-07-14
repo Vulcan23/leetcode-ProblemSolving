@@ -23,8 +23,8 @@ var addTwoNumbers = function (l1, l2) {
             tail = tail.next;
         }
         carry = Math.floor(sum / 10);
-        l1 && (l1 = l1.next);
-        l2 && (l2 = l2.next);
+        l1 = l1?.next;
+        l2 = l2?.next;
     }
     carry > 0 && (tail.next = new ListNode(carry));
     return head;
