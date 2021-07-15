@@ -5,11 +5,10 @@
 var longestPalindrome = function (s) {
     let start = 0,
         max = 0,
-        left,
-        right,
         i = 0;
     while (s.length - 1 - i > max / 2) {
-        left = right = i;
+        let left = i,
+            right = i;
         while (s[right] === s[right + 1]) {
             right++;
         }
