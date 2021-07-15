@@ -8,27 +8,24 @@ var longestPalindrome = function (s) {
         left,
         right,
         i = 0;
-    do {
+    while (s.length - 1 - i > max / 2) {
         left = right = i;
-        while (right < s.length - 1 && s[right] === s[right + 1]) {
+        while (s[right] === s[right + 1]) {
             right++;
         }
         i = right + 1;
         const part = Math.trunc((max - (right - left)) / 2 + 1);
-        if (part > 0 && (left - part < 0 || right + part >= s.length || s[left - part] !== s[right + part])) {
-            continue;
-        }
-        while (left > 0 && s[left - 1] === s[right + 1]) {
-            left--;
-            if (++right >= s.length) {
-                break;
+        if (part <= 0 || s[left - part] === s[right + part]) {
+            while (left > 0 && s[left - 1] === s[right + 1]) {
+                left--;
+                right++;
+            }
+            if (right - left > max) {
+                start = left;
+                max = right - left;
             }
         }
-        if (right - left > max) {
-            start = left;
-            max = right - left;
-        }
-    } while (i < s.length && s.length - i >= max / 2);
+    }
     return s.slice(start, start + max + 1)
 };
 
