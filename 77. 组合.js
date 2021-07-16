@@ -29,4 +29,4 @@ function dfs(arr, n) {
     }
 }
 
-console.log(combine(6, 4));
+console.log(combine(4, 2));
