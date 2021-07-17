@@ -28,7 +28,7 @@ var combinationSum = function (candidates, target) {
     })()) {
         arrLessThanOrEqualTo.sort((a, b) => a - b);
         this.target = target;
-        backtracking([], 0, 0);
+        dfs([], 0, 0);
     }
     return result;
 };
@@ -42,14 +42,14 @@ function getDigitsOfLastNonzeroEffectiveFigure(value) {
     }
 }
 
-function backtracking(nums, index, sum) {
+function dfs(nums, index, sum) {
     if (sum >= this.target) {
         sum === this.target && this.result.push(nums.slice());
         return true;
     }
     for (let i = index; i < this.arrLessThanOrEqualTo.length; i++) {
         nums.push(this.arrLessThanOrEqualTo[i]);
-        if (backtracking(nums, i, sum + this.arrLessThanOrEqualTo[i])) {
+        if (dfs(nums, i, sum + this.arrLessThanOrEqualTo[i])) {
             nums.pop();
             break;
         }

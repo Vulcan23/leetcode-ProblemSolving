@@ -6,11 +6,11 @@
 var combine = function (n, k) {
     this.result = [],
         this.k = k;
-    backtracking([], n);
+    dfs([], n);
     return result;
 };
 
-function backtracking(arr, n) {
+function dfs(arr, n) {
     if (arr.length + n === this.k) {
         this.result.push(arr.concat(Array(n).fill().map((v, i) => i + 1)));
         return true;
@@ -20,7 +20,7 @@ function backtracking(arr, n) {
     } else {
         for (let i = n; i > 0; i--) {
             arr.push(i);
-            if (backtracking(arr, i - 1)) {
+            if (dfs(arr, i - 1)) {
                 arr.pop();
                 break;
             }
