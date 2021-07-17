@@ -34,6 +34,3 @@ var search = function (nums, target) {
 
 console.log(search([2, 5, 6, 0, 0, 1, 2], 0));
 console.log(search([2, 5, 6, 0, 0, 1, 2], 3));
-
-console.log(search([1, 1, 1, 0, 1], 0));
-console.log(search([1, 0, 1, 1, 1], 0));
