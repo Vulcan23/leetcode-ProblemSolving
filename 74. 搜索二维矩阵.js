@@ -6,7 +6,7 @@
 var searchMatrix = function (matrix, target) {
     matrix = matrix.flat();
     let left = 0,
-        right = matrix.length;
+        right = matrix.length - 1;
     while (left <= right) {
         const mid = Math.trunc((left + right) / 2);
         if (matrix[mid] === target) {

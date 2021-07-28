@@ -18,7 +18,7 @@ var combinationSum = function (candidates, target) {
                     if (key > ikey) {
                         isBreak = true;
                     } else if (key === ikey) {
-                        inumber % 2 === 0 && (yesEven = true);
+                        inumber % 2 === 0 && (yesEven ||= true);
                         (inumber === 5 && (number === 5 || number % 2 !== 0 && yesEven) || inumber !== 5 && (number % 2 === 0 || inumber % 2 !== 0)) && (isBreak = true);
                     }
                 }

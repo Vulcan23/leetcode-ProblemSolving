@@ -12,8 +12,7 @@ var combine = function (n, k) {
 
 function dfs(arr, n) {
     if (arr.length + n === this.k) {
-        this.result.push(arr.concat(Array(n).fill().map((v, i) => i + 1)));
-        return true;
+        return this.result.push(arr.concat(Array(n).fill().map((v, i) => i + 1)));
     }
     if (arr.length === this.k) {
         this.result.push(arr.slice());

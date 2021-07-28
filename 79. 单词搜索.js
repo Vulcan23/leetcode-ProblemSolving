@@ -24,29 +24,25 @@ var exist = function (board, word) {
         }
     }
     for (let i = 0; i < arr[0].length; i++) {
-        if (search(0, i)) {
+        if (dfs(0, i)) {
             return true;
         }
     }
     return false;
 };
 
-function search(index, i) {
-    if (index === this.arr.length - 1) {
+function dfs(h, w) {
+    if (h === this.arr.length - 1) {
         return true;
     }
-    const prev = this.arr[index][i],
-        temp = prev.slice();
-    for (let j = 0; j < this.arr[index + 1].length; j++) {
-        const next = this.arr[index + 1][j];
-        if (next.length && (prev[0] === next[0] && Math.abs(prev[1] - next[1]) === 1 || prev[1] === next[1] && Math.abs(prev[0] - next[0]) === 1)) {
-            prev.splice(0, 2);
-            if (search(index + 1, j)) {
-                return true;
-            }
-            prev.push(...temp);
+    const temp = this.arr[h][w].splice(0, 2);
+    for (let i = 0; i < this.arr[h + 1].length; i++) {
+        const next = this.arr[h + 1][i];
+        if (next.length && (temp[0] === next[0] && Math.abs(temp[1] - next[1]) === 1 || temp[1] === next[1] && Math.abs(temp[0] - next[0]) === 1) && dfs(h + 1, i)) {
+            return true;
         }
     }
+    this.arr[h][w] = temp;
 }
 
 let board = [

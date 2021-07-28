@@ -24,7 +24,7 @@
 function dfs(graph) {
     const problemArr = graph["."];
     if (!problemArr.length) {
-        return graph;
+        return true;
     }
     const problem = problemArr.pop();
     for (let i = 1; i <= 9; i++) {

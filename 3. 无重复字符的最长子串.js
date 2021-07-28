@@ -3,30 +3,14 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-    if (s === "") {
-        return 0;
-    }
-    let start = 0,
-        max = 1,
-        sum = 1;
-    for (let i = 1; i < s.length; i++) {
-        let con = true;
-        if (s[i] === s[i - 1]) {
-            start = i;
-            sum = 1;
-            con = false;
-        } else {
-            for (let j = start; j < i - 1; j++) {
-                if (s[j] === s[i]) {
-                    start = j + 1;
-                    sum = i - j;
-                    con = false;
-                    break;
-                }
-            }
-        }
-        con && sum++;
-        max = Math.max(sum, max);
+    let left = 0,
+        right = 0,
+        max = 0;
+    const graph = {};
+    while (left + max < s.length) {
+        graph[s[right]] !== undefined && (left = Math.max(left, graph[s[right]] + 1));
+        graph[s[right]] = right;
+        max = Math.max(max, ++right - left);
     }
     return max;
 };

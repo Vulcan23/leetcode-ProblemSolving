@@ -3,21 +3,33 @@
  * @return {number[]}
  */
 var findDiagonalOrder = function (mat) {
-    const arr = [];
-    let n = 0;
-    const length = mat.length;
-    let i = 0;
+    const m = mat.length,
+        n = mat[0].length,
+        arr = [];
+    let row = 0,
+        column = 0;
     do {
-        const diagonal = [];
-        let j = n;
-        let index = i;
-        do {
-            diagonal.push(mat[j][index]);
-        } while (++j < length && (index = i - j + n, index >= 0));
-        arr.push(...((i + n) % 2 === 0 ? diagonal.reverse() : diagonal));
-    } while (i === mat[0].length - 1 ? ++n !== length : ++i);
+        arr.push(mat[row][column]);
+        if ((row + column) % 2 === 0) {
+            if (column === n - 1) {
+                row++;
+            } else if (row === 0) {
+                column++;
+            } else {
+                column++;
+                row--;
+            }
+        } else if (row === m - 1) {
+            column++;
+        } else if (column === 0) {
+            row++;
+        } else {
+            column--;
+            row++;
+        }
+    } while (row < m && column < n);
     return arr;
-};
+}
 
 let arr = [
     [1, 2, 3],

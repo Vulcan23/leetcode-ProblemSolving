@@ -13,32 +13,28 @@ var threeSumClosest = function (nums, target) {
     }
     let minDifference = Infinity,
         symbol;
-    for (let i = 0; i < length - 2; i++) {
-        if (nums[i] + nums[i + 1] + nums[i + 2] - target >= minDifference) {
-            break;
-        }
-        if (i > 0 && nums[i] === nums[i - 1] || -(nums[i] + nums[length - 2] + nums[length - 1] - target) >= minDifference) {
-            continue;
-        }
-        let left = i + 1,
-            right = length - 1;
-        while (left < right) {
-            const difference = nums[i] + nums[left] + nums[right] - target;
-            if (difference === 0) {
-                return target;
-            }
-            if (difference > 0) {
-                if (difference < minDifference) {
-                    minDifference = difference;
-                    symbol = 1;
+    for (let i = 0; nums[i] + nums[i + 1] + nums[i + 2] - target < minDifference; i++) {
+        if (nums[i] !== nums[i - 1] && -(nums[i] + nums[length - 2] + nums[length - 1] - target) < minDifference) {
+            let left = i + 1,
+                right = length - 1;
+            while (left < right) {
+                const difference = nums[i] + nums[left] + nums[right] - target;
+                if (difference === 0) {
+                    return target;
                 }
-                right--;
-            } else {
-                if (-difference < minDifference) {
-                    minDifference = -difference;
-                    symbol = -1;
+                if (difference > 0) {
+                    if (difference < minDifference) {
+                        minDifference = difference;
+                        symbol = 1;
+                    }
+                    right--;
+                } else {
+                    if (-difference < minDifference) {
+                        minDifference = -difference;
+                        symbol = -1;
+                    }
+                    left++;
                 }
-                left++;
             }
         }
     }

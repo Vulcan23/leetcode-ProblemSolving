@@ -13,19 +13,18 @@ var search = function (nums, target) {
         }
         if (nums[mid] === nums[left] && nums[left] === nums[right]) {
             return nums.slice(left + 1, right).includes(target);
-        } else {
-            if (nums[mid] > target) {
-                if (target < nums[left] && nums[mid] >= nums[left]) {
-                    left = mid + 1;
-                } else {
-                    right = mid - 1;
-                }
+        }
+        if (nums[mid] > target) {
+            if (target < nums[left] && nums[mid] >= nums[left]) {
+                left = mid + 1;
             } else {
-                if (target > nums[right] && nums[mid] <= nums[right]) {
-                    right = mid - 1;
-                } else {
-                    left = mid + 1;
-                }
+                right = mid - 1;
+            }
+        } else {
+            if (target > nums[right] && nums[mid] <= nums[right]) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
             }
         }
     }

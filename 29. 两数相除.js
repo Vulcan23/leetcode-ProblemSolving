@@ -11,28 +11,15 @@ var divide = function (dividend, divisor) {
         return dividend;
     }
     if (divisor === -1) {
-        return dividend === -(2 ** 31) ? -dividend : -dividend - 1;
+        return dividend === -(2 ** 31) ? -dividend - 1 : -dividend;
     }
-    let symbol = 1;
-    if (dividend > 0) {
-        if (divisor < 0) {
-            symbol = -1;
-            divisor = -divisor;
-        }
-    } else {
-        dividend = -dividend;
-        if (divisor > 0) {
-            symbol = -1;
-        } else {
-            divisor = -divisor;
-        }
-    }
+    const symbol = dividend > 0 && divisor > 0 || dividend < 0 && divisor < 0 ? 1 : -1;
     if (dividend === divisor) {
         return symbol;
     }
-    this.divisor = divisor;
-    const i = dfs(dividend);
-    return symbol > 0 ? i : -i;
+    this.divisor = Math.abs(divisor);
+    const i = dfs(Math.abs(dividend));
+    return symbol === 1 ? i : -i;
 };
 
 function dfs(a) {

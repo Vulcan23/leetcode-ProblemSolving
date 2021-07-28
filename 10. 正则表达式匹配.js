@@ -16,7 +16,7 @@ var isMatch = function (s, p) {
             }
         }
     }
-    return graph[s.length - 1][p.length - 1] || false;
+    return graph[s.length - 1][p.length - 1] ?? false;
 };
 
 console.log(isMatch("aa", "a"));

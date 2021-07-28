@@ -8,8 +8,8 @@ var convert = function (s, numRows) {
         return s;
     }
     const result = Array(numRows).fill().map(() => []);
-    let index = 0;
-    let direction = 1;
+    let index = 0,
+        direction = 1;
     for (let i = 0; i < s.length; i++) {
         result[index].push(s[i]);
         if (index === 0) {

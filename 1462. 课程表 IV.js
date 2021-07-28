@@ -13,7 +13,7 @@ var checkIfPrerequisite = function (numCourses, prerequisites, queries) {
     for (let i = 0; i < numCourses; i++) {
         dfs(i, marked[i]);
     }
-    return queries.map(value => marked[value[0]][value[1]] || false);
+    return queries.map(value => marked[value[0]][value[1]] ?? false);
 };
 
 function dfs(i, marked) {

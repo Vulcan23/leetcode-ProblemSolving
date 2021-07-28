@@ -26,7 +26,7 @@ var findMedianSortedArrays = function (nums1, nums2) {
             right = i - 1;
         }
     }
-    return (m + n) % 2 == 0 ? (median1 + median2) / 2 : median1;
+    return (m + n) % 2 === 0 ? (median1 + median2) / 2 : median1;
 };
 
 console.log(findMedianSortedArrays([1, 3], [2]));

@@ -11,8 +11,7 @@ var generateParenthesis = function (n) {
 
 function dfs(lRemain, rRemain, str) {
     if (str.length === 2 * this.n) {
-        this.res.push(str);
-        return;
+        return this.res.push(str);
     }
     lRemain > 0 && dfs(lRemain - 1, rRemain, str + "(");
     lRemain < rRemain && dfs(lRemain, rRemain - 1, str + ")");

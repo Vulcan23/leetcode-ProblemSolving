@@ -2,25 +2,12 @@
  * @param {number[]} nums
  * @return {boolean}
  */
- var canJump = function (nums) {
-    if (nums[0] > nums.length - 2) {
-        return true;
+var canJump = function (nums) {
+    let pos = 0;
+    for (let i = 0; i <= pos && pos < nums.length - 1;) {
+        pos = Math.max(pos, i + nums[i++]);
     }
-    let right = nums[0],
-        left = 0;
-    do {
-        const temp = right;
-        for (let i = right; i > left; i--) {
-            if (nums[i] + i > right) {
-                right = nums[i] + i;
-                if (right > nums.length - 2) {
-                    return true;
-                }
-            }
-        }
-        left = temp;
-    } while (right !== left);
-    return false;
+    return pos >= nums.length - 1;
 };
 
 console.log(canJump([2, 3, 1, 1, 4]));

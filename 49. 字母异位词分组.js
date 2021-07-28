@@ -3,16 +3,17 @@
  * @return {string[][]}
  */
 var groupAnagrams = function (strs) {
-    const graph = {};
+    const map = new Map();
     for (let i = 0; i < strs.length; i++) {
-        const key = strs[i].split("").sort((a, b) => a.charCodeAt() - b.charCodeAt()).join("");
-        if (!graph[key]) {
-            graph[key] = [strs[i]];
+        const key = Array.from(strs[i]).sort().join("");
+        let arr;
+        if (arr = map.get(key)) {
+            arr.push(strs[i]);
         } else {
-            graph[key].push(strs[i]);
+            map.set(key, [strs[i]]);
         }
     }
-    return Object.values(graph);
+    return Array.from(map.values());
 };
 
 console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
