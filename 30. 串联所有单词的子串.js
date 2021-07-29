@@ -23,7 +23,6 @@ var findSubstring = function (s, words) {
                 count = 0;
             } else {
                 tempMap.set(word, (tempMap.get(word) || 0) + 1);
-                count++;
                 let isOver = false;
                 while (tempMap.get(word) > wordsMap.get(word) && !(isOver = left + wordsLength > s.length)) {
                     const tempWord = s.slice(left, left += wordLength);
@@ -33,7 +32,7 @@ var findSubstring = function (s, words) {
                 if (isOver) {
                     break;
                 }
-                if (count === wordsNumber) {
+                if (++count === wordsNumber) {
                     result.push(left);
                 }
             }
