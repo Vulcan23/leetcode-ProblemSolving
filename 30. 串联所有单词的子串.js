@@ -22,7 +22,7 @@ var findSubstring = function (s, words) {
                 tempMap.clear();
                 count = 0;
             } else {
-                tempMap.set(word, (tempMap.get(word) || 0) + 1);
+                tempMap.set(word, (tempMap.get(word) ?? 0) + 1);
                 let isOver = false;
                 while (tempMap.get(word) > wordsMap.get(word) && !(isOver = left + wordsLength > s.length)) {
                     const tempWord = s.slice(left, left += wordLength);
