@@ -4,19 +4,18 @@
  */
 var isValidSudoku = function (board) {
     const graph = {};
+    for (let i = 1; i <= 9; i++) {
+        graph[i] = [[], [], []];
+    }
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             if (board[i][j] !== ".") {
-                if (graph[board[i][j]]) {
-                    if (graph[board[i][j]].some(item => item[0] === i
-                        || item[1] === j
-                        || Math.floor(item[0] / 3) === Math.floor(i / 3) && Math.floor(item[1] / 3) === Math.floor(j / 3))) {
-                        return false;
-                    }
-                    graph[board[i][j]].push([i, j]);
-                } else {
-                    graph[board[i][j]] = [[i, j]];
+                if (graph[board[i][j]][0][i] || graph[board[i][j]][1][j] || graph[board[i][j]][2][Math.floor(i / 3) * 3 + Math.floor(j / 3)]) {
+                    return false;
                 }
+                graph[board[i][j]][0][i] = true;
+                graph[board[i][j]][1][j] = true;
+                graph[board[i][j]][2][Math.floor(i / 3) * 3 + Math.floor(j / 3)] = true;
             }
         }
     }
