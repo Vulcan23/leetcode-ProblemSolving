@@ -3,11 +3,12 @@
  * @return {void} Do not return anything, modify board in-place instead.
  */
 var solveSudoku = function (board) {
+    this.board = board;
     const graph = {
         ".": [],
     };
     for (let i = 1; i <= 9; i++) {
-        graph[i] = [[], [], [], []];
+        graph[i] = [[], [], []];
     }
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
@@ -17,35 +18,30 @@ var solveSudoku = function (board) {
                 graph[board[i][j]][0][i] = true;
                 graph[board[i][j]][1][j] = true;
                 graph[board[i][j]][2][Math.floor(i / 3) * 3 + Math.floor(j / 3)] = true;
-                graph[board[i][j]][3].push([i, j]);
             }
         }
     }
     dfs(graph);
-    for (let i = 1; i <= 9; i++) {
-        graph[i][3].forEach(item => board[item[0]][item[1]] = i.toString());
-    }
     return board;
 };
 
 function dfs(graph) {
-    if (!graph["."].length) {
+    let problem;
+    if (!(problem = graph["."].pop())) {
         return true;
     }
-    const problem = graph["."].pop();
     for (let i = 1; i <= 9; i++) {
         if (!graph[i][0][problem[0]] && !graph[i][1][problem[1]] && !graph[i][2][Math.floor(problem[0] / 3) * 3 + Math.floor(problem[1] / 3)]) {
             graph[i][0][problem[0]] = true;
             graph[i][1][problem[1]] = true;
             graph[i][2][Math.floor(problem[0] / 3) * 3 + Math.floor(problem[1] / 3)] = true;
-            graph[i][3].push(problem);
+            this.board[problem[0]][problem[1]] = i.toString();
             if (dfs(graph)) {
                 return true;
             }
             graph[i][0][problem[0]] = false;
             graph[i][1][problem[1]] = false;
             graph[i][2][Math.floor(problem[0] / 3) * 3 + Math.floor(problem[1] / 3)] = false;
-            graph[i][3].pop();
         }
     }
     graph["."].push(problem);
