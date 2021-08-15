@@ -40,5 +40,3 @@ console.log(isMatch("aa", "*"));
 console.log(isMatch("cb", "?a"));
 console.log(isMatch("adceb", "*a*b"));
 console.log(isMatch("acdcb", "a*c?b"));
-
-console.log(isMatch("aaaab", "*ab*"));
