@@ -24,7 +24,7 @@
             for (const i in graph[item[0]]) {
                 if (item[1] * graph[item[0]][i] > (prob[i] ?? 0)) {
                     stack.push([i, prob[i] = item[1] * graph[item[0]][i]]);
-                    newAdd = true;
+                    newAdd ||= true;
                 }
             }
             newAdd && stack.sort((a, b) => a[1] - b[1]);

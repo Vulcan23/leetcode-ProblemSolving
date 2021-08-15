@@ -7,7 +7,7 @@ var setZeroes = function (matrix) {
         n = matrix[0].length;
     let flagCol0 = false;
     for (let i = 0; i < m; i++) {
-        matrix[i][0] === 0 && (flagCol0 = true);
+        matrix[i][0] === 0 && (flagCol0 ||= true);
         for (let j = 1; j < n; j++) {
             matrix[i][j] === 0 && (matrix[i][0] = matrix[0][j] = 0);
         }
