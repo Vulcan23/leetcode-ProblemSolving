@@ -9,21 +9,21 @@ var solveNQueens = function (n) {
     return result;
 };
 
-function dfs(arr) {
-    if (arr[3].length === this.n) {
-        return this.result.push(arr[3].slice());
+function dfs(graph) {
+    if (graph[3].length === this.n) {
+        return this.result.push(graph[3].slice());
     }
     for (let i = 0; i < this.n; i++) {
-        if (!arr[0][i] && !arr[1][arr[3].length + i] && !arr[2][arr[3].length - i]) {
-            arr[0][i] = true;
-            arr[1][arr[3].length + i] = true;
-            arr[2][arr[3].length - i] = true;
-            arr[3].push(".".repeat(i) + "Q" + ".".repeat(n - 1 - i));
-            dfs(arr);
-            arr[3].pop();
-            arr[0][i] = false;
-            arr[1][arr[3].length + i] = false;
-            arr[2][arr[3].length - i] = false;
+        if (!graph[0][i] && !graph[1][graph[3].length + i] && !graph[2][graph[3].length - i]) {
+            graph[0][i] = true;
+            graph[1][graph[3].length + i] = true;
+            graph[2][graph[3].length - i] = true;
+            graph[3].push(".".repeat(i) + "Q" + ".".repeat(n - 1 - i));
+            dfs(graph);
+            graph[3].pop();
+            graph[0][i] = false;
+            graph[1][graph[3].length + i] = false;
+            graph[2][graph[3].length - i] = false;
         }
     }
 }
