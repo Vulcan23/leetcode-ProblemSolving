@@ -4,21 +4,20 @@
  * @return {boolean}
  */
 var exist = function (board, word) {
-    const chars = {};
+    const map = new Map();
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {
-            const char = board[i][j];
-            if (!chars[char]) {
-                chars[char] = [[i, j]];
+            if (!map.has(board[i][j])) {
+                map.set(board[i][j], [[i, j]]);
             } else {
-                chars[char].push([i, j]);
+                map.get(board[i][j]).push([i, j]);
             }
         }
     }
     this.arr = [];
     for (let i = 0; i < word.length; i++) {
-        if (chars[word[i]]) {
-            arr[i] = chars[word[i]];
+        if (map.has(word[i])) {
+            arr[i] = map.get(word[i]);
         } else {
             return false;
         }
@@ -38,7 +37,7 @@ function dfs(h, w) {
     const temp = this.arr[h][w].splice(0, 2);
     for (let i = 0; i < this.arr[h + 1].length; i++) {
         const next = this.arr[h + 1][i];
-        if (next.length && (temp[0] === next[0] && Math.abs(temp[1] - next[1]) === 1 || temp[1] === next[1] && Math.abs(temp[0] - next[0]) === 1) && dfs(h + 1, i)) {
+        if (next.length && Math.abs(temp[1] - next[1]) + Math.abs(temp[0] - next[0]) === 1 && dfs(h + 1, i)) {
             return true;
         }
     }
