@@ -18,7 +18,7 @@ var fullJustify = function (words, maxWidth) {
         const surplusTotal = maxWidth - count;
         let surplus = surplusTotal % (end - start - 1);
         const blank = " ".repeat((surplusTotal - surplus) / (end - start - 1));
-        result.push(blank.length ? words.slice(start, end).map(item => surplus-- > 0 ? (item += " ") : item).join(blank) : words[start] + " ".repeat(surplusTotal));
+        result.push(blank ? words.slice(start, end).map(item => surplus-- > 0 ? (item += " ") : item).join(blank) : words[start] + " ".repeat(surplusTotal));
         start = end;
     }
     const s = result[result.length - 1].match(/[^ ]+/g).join(" ");
