@@ -19,8 +19,7 @@ function dfs(arr, n) {
     } else {
         for (let i = n; i > 0; i--) {
             arr.push(i);
-            if (dfs(arr, i - 1)) {
-                arr.pop();
+            if (dfs(arr, i - 1) && arr.pop()) {
                 break;
             }
             arr.pop();

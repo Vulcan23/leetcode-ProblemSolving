@@ -19,9 +19,7 @@ var minWindow = function (s, t) {
             }
             while (count === 0) {
                 const cL = s[left];
-                if (!minStr || right + 1 - left < minStr.length) {
-                    minStr = s.slice(left, right + 1);
-                }
+                !minStr || right + 1 - left < minStr.length && (minStr = s.slice(left, right + 1));
                 if (map.has(cL)) {
                     map.set(cL, map.get(cL) + 1);
                     map.get(cL) === 1 && count++;

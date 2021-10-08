@@ -32,9 +32,7 @@ var findSubstring = function (s, words) {
                 if (isOver) {
                     break;
                 }
-                if (++count === wordsNumber) {
-                    result.push(left);
-                }
+                ++count === wordsNumber && result.push(left);
             }
         }
     }
