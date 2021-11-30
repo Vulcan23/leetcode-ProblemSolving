@@ -4,8 +4,7 @@
  */
 var maximalRectangle = function (matrix) {
     let arr;
-    arr = matrix.map(row => largestRectangleArea(arr = (arr ? row.map((char, index) => Number(char) ? arr[index] + 1 : 0) : row.map(char => Number(char)))));
-    return arr.length ? Math.max(...arr) : 0;
+    return Math.max(0, ...matrix.map(row => largestRectangleArea(arr = (arr ? row.map((char, index) => Number(char) ? arr[index] + 1 : 0) : row.map(char => Number(char))))));
 };
 
 function largestRectangleArea(heights) {
