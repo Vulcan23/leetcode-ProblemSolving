@@ -7,9 +7,7 @@
 var checkIfPrerequisite = function (numCourses, prerequisites, queries) {
     const marked = Array(numCourses).fill().map(() => []);
     this.graph = Array(numCourses).fill().map(() => []);
-    prerequisites.forEach(value => {
-        graph[value[0]].push(value[1]);
-    });
+    prerequisites.forEach(value => graph[value[0]].push(value[1]));
     for (let i = 0; i < numCourses; i++) {
         dfs(i, marked[i]);
     }

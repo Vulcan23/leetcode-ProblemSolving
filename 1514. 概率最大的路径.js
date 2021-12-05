@@ -6,14 +6,12 @@
  * @param {number} end
  * @return {number}
  */
- var maxProbability = function (n, edges, succProb, start, end) {
+var maxProbability = function (n, edges, succProb, start, end) {
     const graph = {};
     for (let i = 0; i < n; i++) {
         graph[i] = {};
     }
-    edges.forEach(([i, j], index) => {
-        graph[i][j] = graph[j][i] = succProb[index];
-    });
+    edges.forEach(([i, j], index) => graph[i][j] = graph[j][i] = succProb[index]);
     const stack = [[start, 1]],
         prob = [];
     prob[start] = 1;
