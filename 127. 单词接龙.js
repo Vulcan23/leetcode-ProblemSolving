@@ -14,10 +14,9 @@ var ladderLength = function (beginWord, endWord, wordList) {
     let begin = new Set([beginWord]),
         end = new Set([endWord]);
     let step = 2;
-    while (begin.size) {
-        begin.size > end.size && ([begin, end] = [end, begin]);
+    do {
         const nextSet = new Set();
-        for (let word of begin) {
+        for (const word of begin) {
             for (let i = 0; i < beginWord.length; i++) {
                 const pre = word.slice(0, i), post = word.slice(i + 1);
                 for (let j = 97; j < 123; j++) {
@@ -31,7 +30,8 @@ var ladderLength = function (beginWord, endWord, wordList) {
         }
         step++;
         begin = nextSet;
-    }
+        begin.size > end.size && ([begin, end] = [end, begin]);
+    } while (begin.size);
     return 0;
 };
 
