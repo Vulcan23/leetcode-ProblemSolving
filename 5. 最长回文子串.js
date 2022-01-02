@@ -3,30 +3,33 @@
  * @return {string}
  */
 var longestPalindrome = function (s) {
-    let start = 0,
-        max = 0,
-        i = 0;
-    while (s.length - 1 - i > max / 2) {
-        let left = i,
-            right = i;
-        while (s[right] === s[right + 1]) {
-            right++;
+    let start = 0, end = -1;
+    this.str = `#${s.split("").join("#")}#`;
+    const graph = [];
+    let right = 0, j;
+    for (let i = 0; i < str.length; i++) {
+        if (right > i) {
+            const min_arm_len = Math.min(graph[j * 2 - i] ?? 0, right - i);
+            graph[i] = expand(i - min_arm_len, i + min_arm_len);
+        } else {
+            graph[i] = expand(i, i);
         }
-        i = right + 1;
-        const part = Math.trunc((max - (right - left)) / 2 + 1);
-        if (part <= 0 || s[left - part] === s[right + part]) {
-            while (left > 0 && s[left - 1] === s[right + 1]) {
-                left--;
-                right++;
-            }
-            if (right - left > max) {
-                start = left;
-                max = right - left;
-            }
+        if (i + graph[i] > right) {
+            j = i;
+            right = i + graph[i];
+        }
+        if (graph[i] * 2 > end - start) {
+            start = i - graph[i];
+            end = i + graph[i];
         }
     }
-    return s.slice(start, start + max + 1);
+    return str.slice(start, end + 1).split("#").join("");
 };
+
+function expand(left, right) {
+    while (left-- >= 0 && right++ < this.str.length && this.str[left] === this.str[right]) { }
+    return (right - left - 4) / 2;
+}
 
 console.log(longestPalindrome("babad"));
 console.log(longestPalindrome("cbbd"));
