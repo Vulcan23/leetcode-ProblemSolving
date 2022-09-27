@@ -11,9 +11,9 @@ function largestRectangleArea(heights) {
     const heightsClone = heights.slice();
     heightsClone.unshift(0);
     heightsClone.push(0);
-    let stack = [0];
+    const stack = [0, 1];
     let res = 0;
-    for (let i = 1; i < heightsClone.length; i++) {
+    for (let i = 2; i < heightsClone.length; i++) {
         while (heightsClone[i] < heightsClone[stack[stack.length - 1]]) {
             res = Math.max(heightsClone[stack.pop()] * (i - stack[stack.length - 1] - 1), res);
         }

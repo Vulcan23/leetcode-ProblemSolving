@@ -7,8 +7,8 @@ var combinationSum2 = function (candidates, target) {
     this.result = [];
     this.arrLessThanOrEqualTo = [];
     if ((() => {
-        const [key, number] = getDigitsOfLastNonzeroEffectiveFigure(target),
-            yesEven = false,
+        const [key, number] = getDigitsOfLastNonzeroEffectiveFigure(target);
+        let yesEven = false,
             isBreak = false;
         for (const i of candidates) {
             if (i <= target) {

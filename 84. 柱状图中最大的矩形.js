@@ -5,9 +5,9 @@
 var largestRectangleArea = function (heights) {
     heights.unshift(0);
     heights.push(0);
-    let stack = [0];
+    const stack = [0, 1];
     let res = 0;
-    for (let i = 1; i < heights.length; i++) {
+    for (let i = 2; i < heights.length; i++) {
         while (heights[i] < heights[stack[stack.length - 1]]) {
             res = Math.max(heights[stack.pop()] * (i - stack[stack.length - 1] - 1), res);
         }

@@ -4,7 +4,7 @@
  * @param {string[]} wordList
  * @return {string[][]}
  */
- var findLadders = function (beginWord, endWord, wordList) {
+var findLadders = function (beginWord, endWord, wordList) {
     const wordSet = new Set(wordList);
     if (!wordSet.has(endWord)) {
         return [];
@@ -13,9 +13,10 @@
     wordSet.delete(endWord);
     let begin = new Set([beginWord]),
         end = new Set([endWord]);
-    let graph = new Map();
+    this.graph = new Map();
     let reversed = false;
     let found = false;
+    this.step = 2;
     do {
         const nextSet = new Set();
         for (const word of begin) {
@@ -36,34 +37,35 @@
         }
         if (found) {
             break;
+        } else if (!nextSet.size) {
+            return [];
         }
         nextSet.forEach(word => wordSet.delete(word));
+        step++;
         begin = nextSet;
         if (begin.size > end.size) {
             [begin, end] = [end, begin];
             reversed = !reversed;
         }
     } while (begin.size);
-    const queue = [[beginWord]];
-    let over = false;
-    do {
-        const length = queue.length;
-        for (let i = 0; i < length; i++) {
-            const route = queue.shift();
-            const nextSet = graph.get(route[route.length - 1]);
-            if (nextSet) {
-                if (nextSet.has(endWord)) {
-                    over ||= true;
-                    route.push(endWord);
-                    queue.push(route);
-                } else if (!over) {
-                    nextSet.forEach(nextWord => queue.push(route.concat([nextWord])));
-                }
-            }
-        }
-    } while (queue.length && !over);
-    return queue;
+    this.result = [];
+    dfs([beginWord], endWord);
+    return result;
 };
+
+function dfs(path, endWord) {
+    if (path[path.length - 1] === endWord) {
+        return this.result.push(path.slice());
+    }
+    if (path.length === this.step) {
+        return;
+    }
+    for (const word of this.graph.get(path[path.length - 1]) ?? []) {
+        path.push(word);
+        dfs(path, endWord);
+        path.pop();
+    }
+}
 
 console.log(findLadders("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]));
 console.log(findLadders("hit", "cog", ["hot", "dot", "dog", "lot", "log"]));
