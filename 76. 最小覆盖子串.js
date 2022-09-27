@@ -8,7 +8,7 @@ var minWindow = function (s, t) {
         minStr = "";
     if (left !== undefined) {
         const map = new Map();
-        Array.from(t).forEach(char => map.set(char, (map.get(char) || 0) + 1));
+        Array.from(t).forEach(char => map.set(char, (map.get(char) ?? 0) + 1));
         let right = left,
             count = map.size;
         while (left + t.length <= s.length) {

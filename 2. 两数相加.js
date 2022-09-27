@@ -15,7 +15,7 @@ var addTwoNumbers = function (l1, l2) {
         tail = null;
     let carry = 0;
     while (l1 || l2) {
-        const sum = (l1?.val || 0) + (l2?.val || 0) + carry;
+        const sum = (l1?.val ?? 0) + (l2?.val ?? 0) + carry;
         if (!head) {
             head = tail = new ListNode(sum % 10);
         } else {
